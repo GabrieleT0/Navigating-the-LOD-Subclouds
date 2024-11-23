@@ -161,3 +161,15 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 .devcontainer
+data/quality_data/all_kgs_analyzed/*
+data/quality_data/only_from_LODC/cross-domain/*
+data/quality_data/only_from_LODC/geography/*
+data/quality_data/only_from_LODC/government/*
+data/quality_data/only_from_LODC/life-sciences/*
+data/quality_data/only_from_LODC/linguistic/*
+data/quality_data/only_from_LODC/media/*
+data/quality_data/only_from_LODC/publications/*
+data/quality_data/only_from_LODC/social-networking/*
+data/quality_data/only_from_LODC/user-generated/*
+!data/quality_data/all_kgs_analyzed/extract_quality_data.sh
+!.gitkeep
