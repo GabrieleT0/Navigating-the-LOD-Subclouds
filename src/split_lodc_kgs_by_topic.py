@@ -18,6 +18,9 @@ class SplitLODCKGsByTopic:
                           'https://lod-cloud.net/versions/latest/publications-lod.svg','https://lod-cloud.net/versions/latest/social-networking-lod.svg','https://lod-cloud.net/versions/latest/user-generated-lod.svg']
     
     def recover_lodc_kgs_by_topic(self):
+        '''
+            Retrieves svg files from LOD Cloud and extracts links to KG metadata.
+        '''
         kgs_by_topic = {}
         for link in self.svg_links:
             response = requests.get(link)
@@ -43,10 +46,15 @@ class SplitLODCKGsByTopic:
             topic = ((urlparse(link).path.split("/")[-1]).split('.')[0]).replace('-lod','')
             kgs_by_topic[topic] = hrefs  
 
-        with open('../data/kgs_by_topic.json','a',encoding='utf-8') as file: 
+        with open('../data/kgs_by_topic.json','w',encoding='utf-8') as file: 
             json.dump(kgs_by_topic, file, indent=4, ensure_ascii=False)    
 
     def split_kgs_csv_by_topic(self,dir_path):
+        '''
+            Extract the KGs from LODCloud and split it by topic in different folder.
+
+            :param dir_path: path to csv where to get the KGs to split by topic.
+        '''
         with open('../data/kgs_by_topic.json', "r", encoding="utf-8") as file:
             kgs_by_topic_dict = json.load(file)
 
