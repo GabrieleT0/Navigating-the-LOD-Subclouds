@@ -61,7 +61,7 @@ class QualityEvaluationOT:
 
                 #df.drop(df[df['Understandability score'] > 1.0].index, inplace=True)
 
-                df_filtered.to_csv(f"filtered/{filename}",index=False)
+                df_filtered.to_csv(f"../data/quality_data/only_from_LODC/all/{filename}",index=False)
 
     def stats_over_time(self, metrics, output_dir,only_sparql_up=True):   
         '''
@@ -83,7 +83,7 @@ class QualityEvaluationOT:
                 start_date = datetime(2024, 5, 5)
                 filtered_files = [
                     file for file in self.analysis_results_files
-                    if datetime.strptime(file.split('/')[2].split('.')[0], '%Y-%m-%d') > start_date
+                    if datetime.strptime(file.split("/")[-1].split('.')[0], '%Y-%m-%d') > start_date
                 ]
             else:
                 filtered_files = self.analysis_results_files
@@ -109,7 +109,7 @@ class QualityEvaluationOT:
             here = os.path.dirname(os.path.abspath(__file__))
             if '/' in metric:
                 metric = metric.replace('/','-')
-            save_path = os.path.join(here,f'{self.output_file}/{output_dir}/{metric}.csv')
+            save_path = os.path.join(here,f'../data/{self.output_file}/{output_dir}/{metric}.csv')
             with open(save_path, mode='w', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerows(data)
@@ -183,7 +183,7 @@ class QualityEvaluationOT:
             data.append(evaluation)
 
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'{self.output_file}/by_metric/P1-Provenance_information.csv')
+        save_path = os.path.join(here,f'../data/{self.output_file}/by_metric/P1-Provenance_information.csv')
         with open(save_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(data)
@@ -248,7 +248,7 @@ class QualityEvaluationOT:
             data.append(evaluation)
         
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'{self.output_file}/by_metric/extensional_conciseness.csv')
+        save_path = os.path.join(here,f'../data/{self.output_file}/by_metric/extensional_conciseness.csv')
         with open(save_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(data)
@@ -269,10 +269,9 @@ class QualityEvaluationOT:
         # (if a KG is monitored only once (in the last analysis for example) and found UP, it would go into those ALWAYS UP and with a HIGH percentage of availability.
         start_date = datetime(2024, 3, 17)
         end_date = datetime(2024, 9, 1)
-
         filtered_files = [
             file for file in self.analysis_results_files
-            if start_date <= datetime.strptime(file.split('/')[2].split('.')[0], '%Y-%m-%d') <= end_date
+            if start_date <= datetime.strptime(file.split("/")[-1].split('.')[0], '%Y-%m-%d') <= end_date
         ]
 
         df_list = [pd.read_csv(file, usecols=['KG id', 'Sparql endpoint','SPARQL endpoint URL']) for file in filtered_files]
@@ -295,7 +294,7 @@ class QualityEvaluationOT:
         status_counts = status_df['Status'].value_counts().reset_index()
         status_counts.columns = ['Status', 'Count']
 
-        status_counts.to_csv('./evaluation_results/over_time/by_metric/sparql_over_time.csv',index=False)
+        status_counts.to_csv(f'../data/{self.output_file}/by_metric/sparql_over_time.csv',index=False)
 
         return status_df, status_counts, df
     
@@ -321,8 +320,11 @@ class QualityEvaluationOT:
             availability_percentage_by_kgid[kg_id] = availability_percentage
 
         # Calculate the overall average availability percentage for all alternating KG ids
-        overall_average_availability_percentage = df[df['KG id'].isin(alternating_kg_ids) & (df[column_name] == 'Available')].shape[0] / df[df['KG id'].isin(alternating_kg_ids)].shape[0] * 100
-
+        if(df[df['KG id'].isin(alternating_kg_ids)].shape[0] > 0):
+            overall_average_availability_percentage = df[df['KG id'].isin(alternating_kg_ids) & (df[column_name] == 'Available')].shape[0] / df[df['KG id'].isin(alternating_kg_ids)].shape[0] * 100
+        else:
+            overall_average_availability_percentage = '-'
+            
         stats = {
             'min': min(availability_percentages) if availability_percentages else 0,
             'max': max(availability_percentages) if availability_percentages else 0,
@@ -346,4 +348,4 @@ class QualityEvaluationOT:
 
         df = pd.DataFrame(grouped_counts.items(), columns=['Percentage of availability', 'Number of KGs'])
 
-        df.to_csv('./evaluation_results/over_time/by_metric/percentage_of_availability_sparql.csv', index=False)
+        df.to_csv(f'../data/{self.output_file}/by_metric/percentage_of_availability_sparql.csv', index=False)

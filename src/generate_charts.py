@@ -90,7 +90,7 @@ class GenerateCharts:
         plt.xlabel(xlabel, fontsize=60, weight='bold')
         plt.ylabel('Values', fontsize=60, weight='bold')
         
-        plt.savefig(f'./charts/punctual/{output_filename}', bbox_inches='tight')
+        plt.savefig(f'{self.output_file}/{output_filename}', bbox_inches='tight')
         plt.close()
 
     def generate_combined_boxplot_over_time(self, time_period_range, plot_title,image_name,dimensions_to_exclude = [],palette='Set2'):
@@ -167,12 +167,14 @@ class GenerateCharts:
         :param filename: name of the file in which the data are present regarding the average percentage of availability had.
         """
         df = pd.read_csv(filename)
-
-        plt.figure(figsize=(8,6))
-        minsize = min(df['Number of KGs'])*4
-        maxsize = max(df['Number of KGs'])*4
-        sns.scatterplot(x="Percentage of availability",y="Number of KGs",data=df, sizes=(minsize, maxsize), size='Number of KGs')
-        plt.xlabel("Percentage of Availability", fontsize=16)
-        plt.ylabel("Number of KGs", fontsize=16)
-        plt.savefig(f'{self.output_file}/availability_sparql_over_time')
-        plt.close()
+        try:
+            plt.figure(figsize=(8,6))
+            minsize = min(df['Number of KGs'])*4
+            maxsize = max(df['Number of KGs'])*4
+            sns.scatterplot(x="Percentage of availability",y="Number of KGs",data=df, sizes=(minsize, maxsize), size='Number of KGs')
+            plt.xlabel("Percentage of Availability", fontsize=16)
+            plt.ylabel("Number of KGs", fontsize=16)
+            plt.savefig(f'{self.output_file}/availability_sparql_over_time')
+            plt.close()
+        except Exception as e:
+            pass

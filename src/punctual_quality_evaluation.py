@@ -6,14 +6,16 @@ import requests
 from xml.etree import ElementTree
 
 class PunctualQualityEvaluation:
-    def __init__(self, analysis_file_path,separator = ','):
+    def __init__(self, analysis_file_path,output_dir,separator = ','):
         '''
             Loads the contents of the csv file containing the analysis data into memory.
 
             :param analysis_file_path: Path to the file that contains the quality data to be evaluated
+            :param output_dir: name of the folder under “evaluation_results” in which to include the evaluation results
             :param separator: separator used in the analysis file (by default is ',')
         '''
         self.analysis_data = pd.read_csv(analysis_file_path,sep=separator)
+        self.output_dir = output_dir
 
     def group_by_value(self,metric):
         '''
@@ -76,7 +78,7 @@ class PunctualQualityEvaluation:
             "SPARQL or Dump online" : sparql_or_dump_UP
         }
 
-        with open('./evaluation_results/punctual/availability_stats.csv', mode='w', newline='') as file:
+        with open(f'../data/evaluation_results/{self.output_dir}/punctual/availability_stats.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             
             # Write key as column
@@ -93,7 +95,7 @@ class PunctualQualityEvaluation:
             :param pandas_df: pandas df to write in the csv file.
         '''
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'./evaluation_results/punctual/{metric}_evaluation.csv')
+        save_path = os.path.join(here,f'../data/evaluation_results/{self.output_dir}/punctual/{metric}_evaluation.csv')
         pandas_df.to_csv(save_path,index=index)
 
     def compare_column(self,column_to_compare,sparql_av=False):
@@ -221,7 +223,7 @@ class PunctualQualityEvaluation:
             data.append(evaluation)
             
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'./evaluation_results/punctual/{output_filename}.csv')
+        save_path = os.path.join(here,f'../data/evaluation_results/{self.output_dir}/punctual/{output_filename}.csv')
         with open(save_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(data)
