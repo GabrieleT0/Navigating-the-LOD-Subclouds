@@ -244,3 +244,4 @@ data/evaluation_results/social-networking/punctual/*
 data/evaluation_results/user-generated/punctual/*
 !data/quality_data/all_kgs_analyzed/extract_quality_data.sh
 !.gitkeep
+.D*
