@@ -34,7 +34,7 @@ def filtering():
     
     # Split the KGs quality data by KGs topic
     by_topic = SplitLODCKGsByTopic()
-    by_topic.recover_lodc_kgs_by_topic()
+    #by_topic.recover_lodc_kgs_by_topic()
     by_topic.split_kgs_csv_by_topic('../data/quality_data/all_kgs_analyzed')
 
 
