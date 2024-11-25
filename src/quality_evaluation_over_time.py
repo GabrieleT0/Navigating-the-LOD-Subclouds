@@ -5,6 +5,7 @@ import csv
 import ast
 from collections import Counter
 from datetime import datetime
+import json
 
 class QualityEvaluationOT:
     def __init__(self,analysis_results_path,output_file='/evaluation_results/over_time'):
@@ -41,8 +42,12 @@ class QualityEvaluationOT:
 
             :param analysis_results_path: path to csv where to discard the KGs.
         '''
-        response = requests.get("https://lod-cloud.net/versions/latest/lod-data.json")
-        kgs = response.json()
+        try:
+            response = requests.get("https://lod-cloud.net/versions/latest/lod-data.json")
+            kgs = response.json()
+        except:
+            with open('../data/lodcloud.json', "r", encoding="utf-8") as file:
+                kgs = json.load(file)
        
         identifiers = [data['identifier'] for key, data in kgs.items()]
         # Iterate throught all the csv and create a new csv with only the KGs from LODCloud
