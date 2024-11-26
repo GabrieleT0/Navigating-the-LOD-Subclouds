@@ -1,7 +1,5 @@
 from datetime import date
-import utils 
 import time
-import query
 import pandas as pd
 import ast
 import re
@@ -31,6 +29,7 @@ DIMENSION_NUMER = 20
 
 class RecalculateScore:
     def __init__(self, csv_file_path, dimensions_number):
+        self.csv_file_path = csv_file_path
         self.kgs_quality_data = pd.read_csv(csv_file_path)
         self.dimensionNumber = dimensions_number
         self.availabilityScoreValue = 0
@@ -165,7 +164,7 @@ class RecalculateScore:
             
             security_score = ((secure + authV) * weigth) / SECURITY_METRICS
             self.kgs_quality_data.loc[index,'Security score'] = security_score
-    
+    '''
     def performanceScore(self,weight):
         for index, row in self.kgs_quality_data.iterrows():
             count = 0
@@ -205,6 +204,7 @@ class RecalculateScore:
 
             performance_score = ((tp + latencyV) * weight) / PERFORMANCE_METRICS
             self.kgs_quality_data.loc[index,'Performance score'] = performance_score
+    '''
 
     def accuracyScore(self,weight):
         for index, row in self.kgs_quality_data.iterrows():
@@ -486,22 +486,27 @@ class RecalculateScore:
             self.kgs_quality_data.loc[index,'Versatility score'] = versatility_score
     
     def write_data_on_csv(self):
-        self.kgs_quality_data.to_csv('./Analysis results/2023-11-27_edited.csv',index=False)
-                
-d = RecalculateScore('./Analysis results/2023-11-27.csv',20)
-d.availabilityScore(1)
-d.licensingScore(1)
-d.interlinkingScore(1)
-d.securityScore(1)
-#d.performanceScore(1)
-d.accuracyScore(1)
-d.concisenessScore(1)
-d.verifiabilityScore(1)
-d.reputationScore(1)
-d.believabilityScore(1)
-d.currencyScore(1)
-d.volatilityScore(1)
-d.completenessScore(1)
-d.amountScore(1)
-d.versatilityScore(1)
-d.write_data_on_csv()
+        self.kgs_quality_data.to_csv(f'{self.csv_file_path}',index=False)
+
+files = [
+    '../data/quality_data/all_kgs_analyzed/2023-11-27.csv','../data/quality_data/all_kgs_analyzed/2023-12-03.csv','../data/quality_data/all_kgs_analyzed/2023-12-10.csv', '../data/quality_data/all_kgs_analyzed/2023-12-17.csv', '../data/quality_data/all_kgs_analyzed/2023-12-24.csv', '../data/quality_data/all_kgs_analyzed/2023-12-31.csv'
+]
+
+for file in files:
+    d = RecalculateScore(file,20)
+    d.availabilityScore(1)
+    d.licensingScore(1)
+    d.interlinkingScore(1)
+    d.securityScore(1)
+    #d.performanceScore(1)
+    d.accuracyScore(1)
+    d.concisenessScore(1)
+    d.verifiabilityScore(1)
+    d.reputationScore(1)
+    d.believabilityScore(1)
+    d.currencyScore(1)
+    d.volatilityScore(1)
+    d.completenessScore(1)
+    d.amountScore(1)
+    d.versatilityScore(1)
+    d.write_data_on_csv()
