@@ -3,9 +3,12 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+TOPICS = ['all','cross-domain','geography','government','life-sciences','linguistic','media','publications','social-networking','user-generated']
+
+
 class GenerateCharts:
 
-    def __init__(self,evaluation_results_path,charts_output = './charts') -> None:
+    def __init__(self,evaluation_results_path = False,charts_output = './charts') -> None:
         '''
             Creates a list of CSV files that are to be parsed.
 
@@ -16,10 +19,11 @@ class GenerateCharts:
         self.analysis_results_files = []
         self.output_file = charts_output
         # Get all csv filename from the dir
-        for filename in os.listdir(evaluation_results_path):
-            if '.csv' in filename:
-                file_path = os.path.join(evaluation_results_path, filename)
-                self.analysis_results_files.append(file_path)    
+        if(evaluation_results_path):
+            for filename in os.listdir(evaluation_results_path):
+                if '.csv' in filename:
+                    file_path = os.path.join(evaluation_results_path, filename)
+                    self.analysis_results_files.append(file_path)    
         
 
     def generate_boxplots_over_time(self, range='M'):
@@ -159,6 +163,44 @@ class GenerateCharts:
         plt.savefig(f'{self.output_file}/{image_name}')
         plt.close()
     
+    def generate_boxplot_by_topic(self,filter):
+        """
+        Creates a boxplot with a focus on the same dimensions/categories as the domain changes.
+        :param filter: 'dim' or 'cat'. 'dim' generates boxplot by dimensions as the domain changes. 'cat' generates boxplot by categories as the domain changes.
+        """
+        dataframes = []
+        for topic in TOPICS:
+            if filter == 'cat':
+                out_path = "../charts/by_domain/by_categories"
+                path = f"../data/evaluation_results/{topic}/punctual/categories_stats.csv"
+            else:
+                out_path = "../charts/by_domain/by_dimensions"
+                path = f"../data/evaluation_results/{topic}/punctual/dimensions_stats.csv"
+            df = pd.read_csv(path)
+            df['Source'] = topic
+            dataframes.append(df)
+        
+        combined_df = pd.concat(dataframes, ignore_index=True)
+
+        dimensions = combined_df['Dimension'].unique()
+
+        for dim in dimensions:
+            plt.figure(figsize=(10, 6))
+            filtered_df = combined_df[combined_df['Dimension'] == dim]
+            
+            long_df = filtered_df.melt(id_vars=['Source'], 
+                                    value_vars=['Min', 'Q1', 'Median', 'Q3', 'Max', 'Mean'],
+                                    var_name='Statistic',
+                                    value_name='Value')
+            
+            sns.boxplot(data=long_df, x='Source', y='Value')
+            plt.title(f"Boxplot for {dim}")
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            
+            plt.savefig(f'{out_path}/{dim}.png')
+            plt.close()
+
     def swinging_sparql_bubble_chart(self,filename):
         """
         Creates a bubble chart showing the distribution of the average availability percentage had by 
@@ -178,3 +220,6 @@ class GenerateCharts:
             plt.close()
         except Exception as e:
             pass
+
+d = GenerateCharts()
+d.generate_boxplot_by_topic('dim')
