@@ -46,7 +46,7 @@ def evaluation(topics):
         analysis_over_time = QualityEvaluationOT(f'../data/quality_data/only_from_LODC/{topic}',f'./evaluation_results/{topic}/over_time')
 
         #Load csv with the most recent quality analysis avilable. Results are stored as CSV in the ./evaluation_results/punctual
-        punctual_analysis = PunctualQualityEvaluation(f'../data/quality_data/only_from_LODC/{topic}/2024-09-29.csv',topic)
+        punctual_analysis = PunctualQualityEvaluation(f'../data/quality_data/only_from_LODC/{topic}/2024-11-24.csv',topic)
 
         #Evaluate the Availability of the SPARQL endpoint / VoID file / RDF dump
         punctual_analysis.accessibility_stats()
@@ -75,7 +75,7 @@ def evaluation(topics):
                         'Verifiability score','Reputation score','Believability score','Volatility score','Completeness score','Amount of data score','Representational-Consistency score','Representational-Conciseness score',
                         'Understandability score','Interpretability score','Versatility score','Security score'],'dimensions_stats',only_sparql_up=True)
 
-        punctual_analysis.generate_stats(['U1-value','CS2-value','IN3-value','RC1-value','RC2-value','N4-value'],'metrics_to_compare_with_luzzu')
+        punctual_analysis.generate_stats(['U1-value','CS2-value','IN3-value','RC1-value','RC2-value','IN4-value'],'metrics_to_compare_with_luzzu')
 
         #Extract only the KG with at least SPARQL endpoint, VoID file or RDF dump available and the indication about the license.
         punctual_analysis.get_kgs_available_with_license()
@@ -92,11 +92,11 @@ def evaluation(topics):
 
         #Analyze the SPARQL endpoint status over time
         #Classify the KG SPARQL endpoint availability over time i.e., whether for a given KG, it was always online, offline, not indicated, or fluctuated in behavior between the 3 states.
-        status_df, status_counts, combined_df  = analysis_over_time.classify_sparql_endpoint_availability()
+        #status_df, status_counts, combined_df  = analysis_over_time.classify_sparql_endpoint_availability()
 
         #For KGs with fluctuating behavior, estimate as a percentage, how many times it was found UP in the reporting period.
-        stats, availability_percentage_by_kgid = analysis_over_time.calculate_percentage_of_availability_swinging_sparql(combined_df,status_df)
-        analysis_over_time.group_by_availability_percentage(availability_percentage_by_kgid)
+        #stats, availability_percentage_by_kgid = analysis_over_time.calculate_percentage_of_availability_swinging_sparql(combined_df,status_df)
+        #analysis_over_time.group_by_availability_percentage(availability_percentage_by_kgid)
 
         #KGHearBeat only return a quality score for every dimension, this function allows obtaining 
         #the quality score for each of the 6 quality categories defined in literature (the 6 columns will be added to the CSV file).
@@ -108,7 +108,7 @@ def evaluation(topics):
                                             'Representational score','Trust score'],'by_category')
 
         #Evaluate the quality of each category in the punctual analysis, by calculating the q1, min, median, q3, max.
-        punctual_analysis = PunctualQualityEvaluation(f'../data/quality_data/only_from_LODC/{topic}/2024-09-29.csv',topic)
+        punctual_analysis = PunctualQualityEvaluation(f'../data/quality_data/only_from_LODC/{topic}/2024-11-24.csv',topic)
         punctual_analysis.generate_stats(['Accessibility score','Contextual score','Dataset dynamicity score','Intrinsic score',
                                             'Representational score','Trust score'],'categories_stats',only_sparql_up=True)
 
