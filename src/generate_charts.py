@@ -163,7 +163,7 @@ class GenerateCharts:
         plt.savefig(f'{self.output_file}/{image_name}')
         plt.close()
     
-    def generate_boxplot_by_topic(self,filter):
+    def generate_boxplot_by_topic(self, filter):
         """
         Creates a boxplot with a focus on the same dimensions/categories as the domain changes.
         :param filter: 'dim' or 'cat'. 'dim' generates boxplot by dimensions as the domain changes. 'cat' generates boxplot by categories as the domain changes.
@@ -181,11 +181,13 @@ class GenerateCharts:
             dataframes.append(df)
         
         combined_df = pd.concat(dataframes, ignore_index=True)
-
         dimensions = combined_df['Dimension'].unique()
+        
+        palette = sns.color_palette("husl", len(TOPICS))
+        color_map = dict(zip(TOPICS, palette))
 
         for dim in dimensions:
-            plt.figure(figsize=(10, 6))
+            plt.figure(figsize=(20, 10))
             filtered_df = combined_df[combined_df['Dimension'] == dim]
             
             long_df = filtered_df.melt(id_vars=['Source'], 
@@ -193,9 +195,18 @@ class GenerateCharts:
                                     var_name='Statistic',
                                     value_name='Value')
             
-            sns.boxplot(data=long_df, x='Source', y='Value')
-            plt.title(f"Boxplot for {dim}")
-            plt.xticks(rotation=45)
+            sns.boxplot(data=long_df, x='Source', y='Value', hue='Source',palette=color_map, legend=False)
+            plt.xlabel("",weight='bold',fontsize=30)
+            plt.ylabel("Value",weight='bold',fontsize=30)
+            plt.title(f"Boxplot for {dim}",fontsize=30,weight='bold')
+
+            handles = [plt.Line2D([0], [0], color=color, lw=4) for color in palette]
+            labels = TOPICS
+            plt.legend(handles, labels, title="Topic", bbox_to_anchor=(1.05, 1), loc="best", fontsize=19.5, borderaxespad=0.2)
+            plt.ylim(0, 1.009)
+            plt.xticks(fontsize=30)
+            plt.yticks(fontsize=30)
+            plt.xticks([])
             plt.tight_layout()
             
             plt.savefig(f'{out_path}/{dim}.png')
@@ -222,4 +233,4 @@ class GenerateCharts:
             pass
 
 d = GenerateCharts()
-d.generate_boxplot_by_topic('dim')
+d.generate_boxplot_by_topic('cat')
