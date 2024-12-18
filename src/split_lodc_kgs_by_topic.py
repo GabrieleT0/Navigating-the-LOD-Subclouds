@@ -55,6 +55,7 @@ class SplitLODCKGsByTopic:
 
             :param dir_path: path to csv where to get the KGs to split by topic.
         '''
+        self.recover_lodc_kgs_by_topic()
         with open('../data/kgs_by_topic.json', "r", encoding="utf-8") as file:
             kgs_by_topic_dict = json.load(file)
 
