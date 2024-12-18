@@ -27,6 +27,12 @@ def generate_charts(topic):
     chart_generator_punctual_dimensions = GenerateCharts(f'../data/evaluation_results/{topic}/punctual',f'../charts/{topic}/punctual')
     chart_generator_punctual_dimensions.generate_boxplots_punctual(f'../data/evaluation_results/{topic}/punctual/categories_stats.csv','quality_categories','Category')
 
+    #Generates boxplot with a focus on the same dimensions/categories as the topic changes
+    boxplot_by_topic = GenerateCharts()
+    boxplot_by_topic.generate_boxplot_by_topic('cat')
+    boxplot_by_topic.generate_boxplot_by_topic('dim')
+    
+
 def filtering():
     #Extract only KGs in the LOD Cloud from the the quality analysis results.
     analysis_over_time = QualityEvaluationOT(f'../data/quality_data/only_from_LODC/all',f'./evaluation_results/all/over_time')
