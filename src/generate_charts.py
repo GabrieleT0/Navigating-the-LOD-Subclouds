@@ -231,6 +231,3 @@ class GenerateCharts:
             plt.close()
         except Exception as e:
             pass
-
-d = GenerateCharts()
-d.generate_boxplot_by_topic('cat')
