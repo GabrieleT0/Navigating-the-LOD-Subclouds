@@ -45,6 +45,7 @@ class QualityEvaluationOT:
         try:
             response = requests.get("https://lod-cloud.net/versions/latest/lod-data.json")
             kgs = response.json()
+            print(f"{len(kgs)} KGs recovered from the LOD Cloud")
         except:
             with open('../data/lodcloud.json', "r", encoding="utf-8") as file:
                 kgs = json.load(file)
@@ -60,6 +61,7 @@ class QualityEvaluationOT:
                 missing_identifiers = set(identifiers) - identifiers_in_csv
 
                 print(f"File: {file_path} filtered")
+                print(f"{len(missing_identifiers)} KGs not analyzed by KGHeartBeat")
 
                 df['KG id'] = df['KG id'].astype(str).str.strip()
                 df_filtered = df[df['KG id'].isin(identifiers)]
