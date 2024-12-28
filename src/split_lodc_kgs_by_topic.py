@@ -78,3 +78,24 @@ class SplitLODCKGsByTopic:
                     df_filtered = df[df['KG id'].isin(kgs_in_the_topic)]
 
                     df_filtered.to_csv(f"../data/quality_data/only_from_LODC/{topic}/{filename}",index=False)
+
+        # Create a CSVs with only yhe KGs without a domain
+        all_kgs_without_domain = []
+        for urls in kgs_by_topic_dict.values():
+            all_kgs_without_domain.extend(urls)
+        all_kgs_without_domain = [url.split("/")[-1] for url in all_kgs_without_domain]
+        for filename in os.listdir(dir_path):
+                if '.csv' in filename:
+                    file_path = os.path.join(dir_path, filename)
+                    df = pd.read_csv(file_path)
+
+                    df['KG id'] = df['KG id'].astype(str).str.strip()
+                    df_filtered = df[~df['KG id'].isin(all_kgs_without_domain)]
+
+                    df_filtered.to_csv(f"../data/quality_data/only_from_LODC/no-domain/{filename}",index=False)
+
+
+with open('../data/kgs_by_topic.json', "r", encoding="utf-8") as file:
+    kgs_by_topic_dict = json.load(file)
+    counts = {key: len(values) for key, values in kgs_by_topic_dict.items()}
+    print(counts)

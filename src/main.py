@@ -4,13 +4,13 @@ from generate_charts import GenerateCharts
 import argparse
 from split_lodc_kgs_by_topic import SplitLODCKGsByTopic
 
-TOPICS = ['cross-domain','geography','government','life-sciences','linguistic','media','publications','social-networking','user-generated']
+TOPICS = ['cross-domain','geography','government','life-sciences','linguistic','media','publications','social-networking','user-generated','no-domain']
 
 def generate_charts(topic):
     chart_generator_over_time_dimensions = GenerateCharts(f'../data/evaluation_results/{topic}/over_time/by_dimension',f'../charts/{topic}/over_time/by_dimension')
     chart_generator_over_time_dimensions.generate_boxplots_over_time('M')
 
-    chart_generator_over_time_dimensions.swinging_sparql_bubble_chart(f'../data/evaluation_results/{topic}/over_time/by_metric/percentage_of_availability_sparql.csv')
+    #chart_generator_over_time_dimensions.swinging_sparql_bubble_chart(f'../data/evaluation_results/{topic}/over_time/by_metric/percentage_of_availability_sparql.csv')
 
     #Generates a Boxplot for every quality category to see the change in the quality category score over time
     chart_generator_over_time_category = GenerateCharts(f'../data/evaluation_results/{topic}/over_time/by_category',f'../charts/{topic}/over_time/by_category')
@@ -69,6 +69,11 @@ def evaluation(topics):
         #Calculates the occurrences of the different licenses indicated in the KG metadata.
         punctual_analysis.group_by_value("License machine redeable (metadata)")
 
+        punctual_analysis.group_by_value("Sparql endpoint")
+        punctual_analysis.group_by_value("Availability of RDF dump (metadata)")
+        punctual_analysis.group_by_value("Availability VoID file")
+        punctual_analysis.group_by_value("Availability of a common accepted Media Type")
+
         #Compare the license information from the metadata with the license indicated in the KG
         #punctual_analysis.compare_column(['KG id','License machine redeable (metadata)','License machine redeable (query)'],sparql_av=True)
 
@@ -79,7 +84,7 @@ def evaluation(topics):
         #Calculates the min, max, mean, q1, q2 for all the quality dimensions monitored.
         punctual_analysis.generate_stats(['Availability score','Licensing score','Interlinking score','Performance score','Accuracy score','Consistency score','Conciseness score',
                         'Verifiability score','Reputation score','Believability score','Volatility score','Completeness score','Amount of data score','Representational-Consistency score','Representational-Conciseness score',
-                        'Understandability score','Interpretability score','Versatility score','Security score'],'dimensions_stats',only_sparql_up=True)
+                        'Understandability score','Interpretability score','Versatility score','Security score','Score'],'dimensions_stats',only_sparql_up=True)
 
         punctual_analysis.generate_stats(['U1-value','CS2-value','IN3-value','RC1-value','RC2-value','IN4-value'],'metrics_to_compare_with_luzzu')
 

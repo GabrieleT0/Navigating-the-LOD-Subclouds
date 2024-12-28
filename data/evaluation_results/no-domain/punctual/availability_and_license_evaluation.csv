@@ -1,0 +1,73 @@
+Sparql endpoint,Availability of RDF dump (metadata),Availability VoID file,Availability of a common accepted Media Type,License machine redeable (metadata),License machine redeable (query)
+-,1,VoID file available,True,False,absent
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-zero,-
+Available,0,VoID file absent,False,"{'type': 'notspecified', 'title': 'License not specified'}",http://creativecommons.org/licenses/by/3.0/
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-zero,Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence - see http://creativecommons.org/licenses/by-nc-sa/4.0/ - Original copyright Biblioteca Virtual Miguel de Cervantes
+Available,-1,VoID file available,No dump available,http://www.opendefinition.org/licenses/cc-by,http://creativecommons.org/licenses/by-sa/4.0/
+Available,-1,VoID file absent,No dump available,http://www.opendefinition.org/licenses/cc-zero,http://publications.europa.eu/resource/authority/licence/APACHE_2_0
+Available,1,VoID file available,True,http://www.opendefinition.org/licenses/cc-by-sa,http://creativecommons.org/licenses/by-sa/4.0/
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",http://creativecommons.org/publicdomain/zero/1.0/
+Available,-1,VoID file absent,No dump available,http://www.opendefinition.org/licenses/cc-zero,http://publications.europa.eu/resource/authority/licence/APACHE_2_0
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-zero,http://www.opendatacommons.org/licenses/pddl/1.0/
+Available,1,VoID file available,False,False,http://creativecommons.org/licenses/by-nc-nd/3.0/
+Available,1,VoID file available,False,False,http://creativecommons.org/licenses/by-nc-nd/3.0/
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-by,http://creativecommons.org/licenses/by/3.0/
+Available,1,VoID file absent,False,False,http://creativecommons.org/licenses/by/3.0/
+Available,1,VoID file absent,True,http://www.opendefinition.org/licenses/odc-by,"Copyright 2014, Milos Jovanovik"
+Available,0,VoID file absent,No dump available,"{'url': 'http://creativecommons.org/licenses/by-nc/2.0/', 'type': 'cc-nc', 'title': 'Creative Commons Non-Commercial (Any)'}",https://creativecommons.org/licenses/by-nc-nd/4.0/
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file available,True,http://www.opendefinition.org/licenses/cc-by,-
+Available,1,VoID file absent,False,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",http://www.nationalarchives.gov.uk/doc/open-government-licence/
+Available,0,VoID file offline,No dump available,http://www.opendefinition.org/licenses/cc-by,https://creativecommons.org/licenses/by/4.0/
+offline,1,VoID file available,False,http://www.opendefinition.org/licenses/cc-zero,http://creativecommons.org/publicdomain/zero/1.0/
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,http://www.opendefinition.org/licenses/cc-by,-
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-by,https://creativecommons.org/licenses/by/4.0/
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/odc-by', 'type': 'odc-by', 'title': 'Open Data Commons Attribution License'}",http://creativecommons.org/publicdomain/zero/1.0/
+Available,1,VoID file absent,False,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",https://w3id.org/italia/env/ld/catalog/license/ccby40
+Available,1,VoID file absent,False,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",https://w3id.org/italia/env/ld/catalog/license/ccby40
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-by,https://w3id.org/italia/env/ld/catalog/license/ccby40
+Available,1,VoID file absent,False,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",https://w3id.org/italia/env/ld/catalog/license/ccby40
+-,1,VoID file available,True,http://creativecommons.org/licenses/by-nc/2.0/,absent
+Available,0,VoID file absent,No dump available,"{'type': 'notspecified', 'title': 'License not specified'}",-
+Available,0,VoID file absent,No dump available,"{'url': 'http://www.opendefinition.org/licenses/cc-by-sa', 'type': 'cc-by-sa', 'title': 'Creative Commons Attribution Share-Alike'}",-
+Available,1,VoID file absent,True,http://reference.data.gov.uk/id/open-government-licence,http://www.nationalarchives.gov.uk/doc/open-government-licence/
+Available,1,VoID file absent,True,"{'type': 'other-open', 'title': 'Other (Open)'}",http://kbss.felk.cvut.cz/ontologies/2011/monument-damage-reasoningscope.owl/licensedocument_6
+Available,-1,VoID file absent,No dump available,https://creativecommons.org/licenses/by-sa/3.0/,http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40
+Available,1,VoID file absent,False,https://creativecommons.org/licenses/by/3.0/,http://creativecommons.org/licenses/by-nc-sa/3.0/
+Available,-1,VoID file absent,No dump available,http://www.opendefinition.org/licenses/cc-by,-
+Available,1,VoID file absent,True,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",http://www.nationalarchives.gov.uk/doc/open-government-licence/
+Available,1,VoID file absent,True,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",http://www.nationalarchives.gov.uk/doc/open-government-licence/
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-by,http://www.opendatacommons.org/licenses/pddl/1.0/
+-,1,VoID file available,False,http://www.opendefinition.org/licenses/cc-zero,absent
+Available,1,VoID file absent,False,http://creativecommons.org/licenses/by-nc/2.0/,https://creativecommons.org/licenses/by-nc-nd/4.0/
+Available,1,VoID file absent,False,http://creativecommons.org/licenses/by-nc/2.0/,-
+Available,1,VoID file absent,False,http://creativecommons.org/licenses/by-nc/2.0/,-
+Available,1,VoID file absent,False,http://creativecommons.org/licenses/by-nc/2.0/,https://creativecommons.org/licenses/by-nc-nd/4.0/
+Available,1,VoID file absent,False,http://creativecommons.org/licenses/by-nc/2.0/,-
+Available,1,VoID file absent,True,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",-
+Available,1,VoID file absent,True,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",-
+Available,1,VoID file absent,True,"{'url': 'http://reference.data.gov.uk/id/open-government-licence', 'type': 'uk-ogl', 'title': 'UK Open Government Licence (OGL)'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,0,VoID file absent,No dump available,http://www.opendefinition.org/licenses/cc-by,-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",http://creativecommons.org/licenses/by/3.0/
+Available,-1,VoID file offline,No dump available,https://creativecommons.org/licenses/by/3.0/,http://creativecommons.org/publicdomain/zero/1.0/
+Available,1,VoID file absent,False,http://www.opendefinition.org/licenses/cc-by-sa,http://purl.oclc.org/NET/rdflicense/gpl-3.0
+Available,1,VoID file absent,False,"{'type': 'notspecified', 'title': 'License not specified'}",http://purl.oclc.org/NET/rdflicense/gpl-3.0
+Available,1,VoID file absent,False,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",https://creativecommons.org/licenses/by/4.0/deed.it
+offline,1,VoID file available,False,"{'url': 'http://www.opendefinition.org/licenses/cc-zero', 'type': 'cc-zero', 'title': 'Creative Commons CCZero'}",http://creativecommons.org/publicdomain/zero/1.0/
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by-sa', 'type': 'cc-by-sa', 'title': 'Creative Commons Attribution Share-Alike'}",http://creativecommons.org/licenses/by-sa/3.0/igo/
+Available,1,VoID file offline,True,"{'url': 'http://creativecommons.org/licenses/by-nc/2.0/', 'type': 'cc-nc', 'title': 'Creative Commons Non-Commercial (Any)'}",http://creativecommons.org/licenses/by-sa/3.0/igo/
+Available,1,VoID file absent,False,"{'url': 'http://www.opendefinition.org/licenses/cc-by-sa', 'type': 'cc-by-sa', 'title': 'Creative Commons Attribution Share-Alike'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file offline,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file offline,True,"{'type': 'other-closed', 'title': 'Other (Not Open)'}",-
+Available,1,VoID file absent,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,1,VoID file offline,True,"{'url': 'http://www.opendefinition.org/licenses/cc-by', 'type': 'cc-by', 'title': 'Creative Commons Attribution'}",-
+Available,-1,VoID file offline,No dump available,http://www.opendefinition.org/licenses/cc-by,http://www.wikidata.org/entity/Q18199165
