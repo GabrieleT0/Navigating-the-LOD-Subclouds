@@ -78,7 +78,7 @@ class PunctualQualityEvaluation:
             "SPARQL or Dump online" : sparql_or_dump_UP
         }
 
-        with open(f'../data/evaluation_results/{self.output_dir}/punctual/availability_stats.csv', mode='w', newline='') as file:
+        with open(f'../data/evaluation_results/2024/{self.output_dir}/punctual/availability_stats.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             
             # Write key as column
@@ -95,7 +95,7 @@ class PunctualQualityEvaluation:
             :param pandas_df: pandas df to write in the csv file.
         '''
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'../data/evaluation_results/{self.output_dir}/punctual/{metric}_evaluation.csv')
+        save_path = os.path.join(here,f'../data/evaluation_results/2024/{self.output_dir}/punctual/{metric}_evaluation.csv')
         pandas_df.to_csv(save_path,index=index)
 
     def compare_column(self,column_to_compare,sparql_av=False):
@@ -223,7 +223,7 @@ class PunctualQualityEvaluation:
             data.append(evaluation)
             
         here = os.path.dirname(os.path.abspath(__file__))
-        save_path = os.path.join(here,f'../data/evaluation_results/{self.output_dir}/punctual/{output_filename}.csv')
+        save_path = os.path.join(here,f'../data/evaluation_results/2024/{self.output_dir}/punctual/{output_filename}.csv')
         with open(save_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(data)

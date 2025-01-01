@@ -172,10 +172,10 @@ class GenerateCharts:
         for topic in TOPICS:
             if filter == 'cat':
                 out_path = "../charts/by_domain/by_categories"
-                path = f"../data/evaluation_results/{topic}/punctual/categories_stats.csv"
+                path = f"../data/evaluation_results/2024/{topic}/punctual/categories_stats.csv"
             else:
                 out_path = "../charts/by_domain/by_dimensions"
-                path = f"../data/evaluation_results/{topic}/punctual/dimensions_stats.csv"
+                path = f"../data/evaluation_results/2024/{topic}/punctual/dimensions_stats.csv"
             df = pd.read_csv(path)
             df['Source'] = topic
             dataframes.append(df)
