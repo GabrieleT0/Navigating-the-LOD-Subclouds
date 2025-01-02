@@ -1,5 +1,5 @@
 # Navigating the LOD Subclouds: Assessing Linked Open Data Quality by Domain
-This repository contains code and supporting data for the publication "*Navigating the LOD Subclouds: Assessing Linked Open Data Quality by Domain*", submitted as a full research paper to "*The Web of Data Quality Workshop@The Web Conference 2025*"
+This repository contains code and supporting data for the publication "*Navigating the LOD Subclouds: Assessing Linked Open Data Quality by Domain*", submitted as a full research paper to "[*The Web of Data Quality Workshop@The Web Conference 2025*](https://dataqualityws.github.io/)"
 The paper idea is to evaluate the quality of the different domains (also called sub-clouds) within the [Linked Open Data Cloud](https://lod-cloud.net/), utilizing quality data computed by [KGHeartBeat](https://doi.org/10.1007/978-3-031-77847-6_3).
 The quality data calculated by the tool, as well as the quality evaluation data for individual sub-clouds and the corresponding boxplots, are included within this project, refer to the [How to Explore Evaluation Data](#how-to-explore-evaluation-data) section for an overview of the repository structure and guidance on locating the evaluation data and charts within this project. This repository also includes the quality data extracted from [Schmachtenberg_et_al.](https://doi.org/10.1007/978-3-319-11964-9_16) and [State of the LOD Cloud](https://web.archive.org/web/20160323120153/lod-cloud.net/state/#structure), used as references for the publictions.
 
@@ -54,8 +54,6 @@ source <virtual-environment-name>/bin/activate
 <virtual-environment-name>/Scripts/activate.bat //In CMD
 <virtual-environment-name>/Scripts/Activate.ps1 //In Powershel
 
-#Install all the dependencies
-pip install -r requirements.txt
 ```
 
 #### Install all the dependencies
