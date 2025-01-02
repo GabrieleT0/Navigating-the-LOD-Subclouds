@@ -228,3 +228,4 @@ data/quality_data/only_from_LODC/user-generated/*
 .D*
 !data/evaluation_results/2024/all/punctual
 data/evaluation_results/2024/no-domain/
+!data/quality_data/all_kgs_analyzed/2024-11-24.csv.gz
